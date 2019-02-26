@@ -1,16 +1,16 @@
 package file;
 
+import obj.Node;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import obj.*;
-
 //Lecture du fichier contenant le graphe
 
 public class ReadFile {
-	ArrayList<Node> ret = new ArrayList<Node>();
+	ArrayList<Node> ret = new ArrayList<Node>(); //contient la liste des noeuds du graphe
 	
 	public ReadFile() {
 		
@@ -20,16 +20,16 @@ public class ReadFile {
 		String[] line = new String[2];
 		
 		
-		File file = new File("1.edges"); 
+		File file = new File("1.edges");
 		 Scanner sc = new Scanner(file); 
 		 while (sc.hasNextLine()) {
 			 line = sc.nextLine().split(" ");
 			 if(!ar_contains(Integer.parseInt(line[0]))) {
-				 ret.add(new Node(Integer.parseInt(line[0])));	
+				 ret.add(new Node(Integer.parseInt(line[0])));	//ajoute le noeud à la liste
 				 ret.get(ret.size()-1).addNode(Integer.parseInt(line[1]));
 			 }
 			 else {
-				 getNodeFromInt(Integer.parseInt(line[0])).addNode(Integer.parseInt(line[1]));;
+				 getNodeFromInt(Integer.parseInt(line[0])).addNode(Integer.parseInt(line[1]));
 			 }
 		 }
 		 return ret;
