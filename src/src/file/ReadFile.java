@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import src.obj.*;
 
+//Lecture du fichier contenant le graphe
+
 public class ReadFile {
 	ArrayList<Node> ret = new ArrayList<Node>();
 	

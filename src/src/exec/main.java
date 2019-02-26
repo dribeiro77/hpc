@@ -9,7 +9,6 @@ import src.file.ReadFile;
 public class main {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		
 		 		
 		 		
 	}
