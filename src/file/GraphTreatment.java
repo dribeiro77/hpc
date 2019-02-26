@@ -13,8 +13,8 @@ public class GraphTreatment {
 	public GraphTreatment(ArrayList<Node> ret) {
 		super();
 		this.ret = ret;
-		matrixAdj = new int[ret.size()][ret.size()];
-		matrixTran = new float[ret.size()][ret.size()];
+		matrixAdj = new int[getRetMax()][getRetMax()];
+		matrixTran = new float[getRetMax()][getRetMax()];
 	}
 	
 	
@@ -87,6 +87,16 @@ public class GraphTreatment {
 		}
 	}
 	
+	public int getRetMax(){
+		int max=0;
+		
+		for (int i = 0; i < ret.size(); i++) {
+			if (ret.get(i).getNode_id()>max){
+				max=ret.get(i).getNode_id();
+			}
+		}
+		return max;
+	}
 	
 	
 

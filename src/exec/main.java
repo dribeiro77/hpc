@@ -14,6 +14,7 @@ public class main {
 		ReadFile read = new ReadFile();
 		ArrayList<Node> ret = read.readFile();
 		GraphTreatment grp = new GraphTreatment(ret);
+		
 		grp.matrixAdj();
 		grp.matrixTran();
 		grp.printMatrixAdj();
