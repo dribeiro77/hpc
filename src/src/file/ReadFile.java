@@ -18,7 +18,7 @@ public class ReadFile {
 		String[] line = new String[2];
 		
 		
-		File file = new File("0.edges"); 
+		File file = new File("1.edges"); 
 		 Scanner sc = new Scanner(file); 
 		 while (sc.hasNextLine()) {
 			 line = sc.nextLine().split(" ");
@@ -27,11 +27,12 @@ public class ReadFile {
 				 ret.get(ret.size()-1).addNode(Integer.parseInt(line[1]));
 			 }
 			 else {
-				 
+				 getNodeFromInt(Integer.parseInt(line[0])).addNode(Integer.parseInt(line[1]));;
 			 }
 		 }
 		 return ret;
-	}		     
+	}		
+	
 	public boolean ar_contains(int n) {
 		for (int i = 0; i < ret.size(); i++) {
 			if (ret.get(i).getNode_id()==n) {
@@ -41,4 +42,16 @@ public class ReadFile {
 		return false;
  
 	}
+	
+	public Node getNodeFromInt(int nb){
+		for (int j = 0; j < ret.size(); j++) {
+			if(ret.get(j).getNode_id()==nb){
+				return ret.get(j);
+			}
+		}
+		return null;
+	}
+	
+	
+	
 }

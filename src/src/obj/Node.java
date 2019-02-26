@@ -10,6 +10,7 @@ public class Node {
 		public Node(int node_id) {
 			super();
 			this.node_id = node_id;
+			voisins = new ArrayList();
 		}
 
 
