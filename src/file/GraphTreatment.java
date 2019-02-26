@@ -1,20 +1,20 @@
-package src.file;
+package file;
 
 import java.util.ArrayList;
 
-import src.obj.Node;
+import obj.Node;
 
 public class GraphTreatment {
 	
 	ArrayList<Node> ret = new ArrayList<Node>();
 	int[][] matrixAdj;
-	int[][] matrixTran;
+	float[][] matrixTran;
 
 	public GraphTreatment(ArrayList<Node> ret) {
 		super();
 		this.ret = ret;
 		matrixAdj = new int[ret.size()][ret.size()];
-		matrixTran = new int[ret.size()][ret.size()];
+		matrixTran = new float[ret.size()][ret.size()];
 	}
 	
 	
@@ -23,6 +23,24 @@ public class GraphTreatment {
 		for (int i = 0; i < ret.size(); i++) {
 			for (int j = 0; j < ret.get(i).getVoisins().size(); j++) {
 				matrixAdj[ret.get(i).getNode_id()-1][ret.get(i).getVoisins().get(j)-1]=1;
+			}
+		}
+	}
+	
+	public void matrixTran(){
+		int count=0;
+		for (int i = 0; i < matrixAdj.length; i++) {
+			count=0;
+			for (int j = 0; j < matrixAdj[i].length; j++) {
+				if(matrixAdj[i][j]==1){
+					count++;
+				}
+			}
+			
+			for (int j = 0; j < matrixAdj[i].length; j++) {
+				if(matrixAdj[i][j]==1){
+					matrixTran[i][j]= (float) ((float)1/count);
+				}
 			}
 		}
 	}
@@ -43,18 +61,27 @@ public class GraphTreatment {
 		this.matrixAdj = matrixAdj;
 	}
 
-	public int[][] getMatrixTran() {
+	public float[][] getMatrixTran() {
 		return matrixTran;
 	}
 
-	public void setMatrixTran(int[][] matrixTran) {
+	public void setMatrixTran(float[][] matrixTran) {
 		this.matrixTran = matrixTran;
 	}
 	
-	public void printMatrix(){
+	public void printMatrixAdj(){
 		for (int i = 0; i < matrixAdj.length; i++) {
 			for (int j = 0; j < matrixAdj[i].length; j++) {
 				System.out.print(matrixAdj[i][j] +" ");
+			}
+			System.out.println();
+		}
+	}
+	
+	public void printMatrixTran(){
+		for (int i = 0; i < matrixTran.length; i++) {
+			for (int j = 0; j < matrixTran[i].length; j++) {
+				System.out.print(matrixTran[i][j] +" ");
 			}
 			System.out.println();
 		}

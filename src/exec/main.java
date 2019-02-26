@@ -1,15 +1,11 @@
-package src.exec;
+package exec;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-import javax.swing.SingleSelectionModel;
-
-import src.file.GraphTreatment;
-import src.file.ReadFile;
-import src.obj.Node;
+import file.GraphTreatment;
+import file.ReadFile;
+import obj.Node;
 
 public class main {
 
@@ -19,9 +15,10 @@ public class main {
 		ArrayList<Node> ret = read.readFile();
 		GraphTreatment grp = new GraphTreatment(ret);
 		grp.matrixAdj();
-		
-		grp.printMatrix();
-		
+		grp.matrixTran();
+		grp.printMatrixAdj();
+		System.out.println();
+		grp.printMatrixTran();
 		 		
 		 		
 	}

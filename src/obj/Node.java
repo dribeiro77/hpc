@@ -1,4 +1,4 @@
-package src.obj;
+package obj;
 
 import java.util.ArrayList;
 

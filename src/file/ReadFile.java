@@ -1,11 +1,11 @@
-package src.file;
+package file;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import src.obj.*;
+import obj.*;
 
 //Lecture du fichier contenant le graphe
 
