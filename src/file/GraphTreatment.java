@@ -34,15 +34,15 @@ public class GraphTreatment {
 		int count=0;
 		for (int i = 0; i < matrixAdj.length; i++) {
 			count=0;
-			for (int j = 0; j < matrixAdj[i].length; j++) {
-				if(matrixAdj[i][j]==1){
+			for (int j = 0; j < matrixAdj.length; j++) {
+				if(matrixAdj[j][i]==1){
 					count++;
 				}
 			}
 			
-			for (int j = 0; j < matrixAdj[i].length; j++) {
-				if(matrixAdj[i][j]==1){
-					matrixTran[i][j]= (float) ((float)1/count);
+			for (int j = 0; j < matrixAdj.length; j++) {
+				if(matrixAdj[j][i]==1){
+					matrixTran[j][i]= (float) ((float)1/count);
 				}
 			}
 		}
