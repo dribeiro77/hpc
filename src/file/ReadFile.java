@@ -20,7 +20,7 @@ public class ReadFile {
 		String[] line = new String[2];
 		
 		
-		File file = new File("1.edges");
+		File file = new File("0.edges");
 		 Scanner sc = new Scanner(file); 
 		 while (sc.hasNextLine()) {
 			 line = sc.nextLine().split(" ");

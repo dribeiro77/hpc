@@ -3,6 +3,7 @@ package exec;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
 import org.jgrapht.Graph;
@@ -21,6 +22,12 @@ public class main {
 		ArrayList<Node> ret = read.readFile();
 
 		NetworkGraph netGraph = new NetworkGraph(ret);
+		Map<Integer, Double> scoreMap = netGraph.getSortedScoreMap();
+		Iterator<Map.Entry<Integer, Double>> iterator =  scoreMap.entrySet().iterator();
+		while(iterator.hasNext()) {
+			Map.Entry<Integer, Double> entry = iterator.next();
+			System.out.println(entry.getKey() + " --- " + entry.getValue());
+		}
 
 		/*Set<Integer> testSet = netGraph.getGraph().vertexSet();
 		Iterator<Integer> iterator =  testSet.iterator();
@@ -30,13 +37,12 @@ public class main {
 
 		GraphTreatment grp = new GraphTreatment(ret);
 		
-		/*grp.matrixAdj();
-		grp.matrixTran();
+		grp.matrixAdj();
+		/*grp.matrixTran();
 		grp.printMatrixAdj();
 		System.out.println();
 		grp.printMatrixTran();*/
-		 		
-		 		
+
 	}
 
 }

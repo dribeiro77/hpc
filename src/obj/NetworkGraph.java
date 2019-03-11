@@ -1,14 +1,17 @@
 package obj;
 
+import obj.ValueComparator;
+
 import org.jgrapht.Graph;
 import org.jgrapht.alg.interfaces.VertexScoringAlgorithm;
 import org.jgrapht.alg.scoring.PageRank;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 
-import java.util.ArrayList;
 
-public class NetworkGraph{
+import java.util.*;
+
+public class NetworkGraph {
 
     Graph<Integer, DefaultEdge> graph = new SimpleGraph<Integer, DefaultEdge>(DefaultEdge.class); //GRAPH
     VertexScoringAlgorithm<Integer, Double> pageRank;
@@ -19,7 +22,7 @@ public class NetworkGraph{
         initPageRank(graph);
     }
 
-    public void initGraph(ArrayList<Node> ret){
+    public void initGraph(ArrayList<Node> ret) {
         Node currentNode;
         int currentNeighborID;
 
@@ -36,11 +39,19 @@ public class NetworkGraph{
         }
     }
 
-    public void initPageRank(Graph<Integer, DefaultEdge> parGraph){
+    public void initPageRank(Graph<Integer, DefaultEdge> parGraph) {
         pageRank = new PageRank(graph, 0.85);
     }
 
     public Graph<Integer, DefaultEdge> getGraph() {
         return graph;
+    }
+
+    public Map<Integer, Double> getSortedScoreMap() {
+        Map<Integer, Double> unsortMap = pageRank.getScores();
+        ValueComparator comparator = new ValueComparator(unsortMap);
+        Map<Integer, Double> sortMap = new TreeMap<>(comparator);
+        sortMap.putAll(unsortMap);
+        return sortMap;
     }
 }
