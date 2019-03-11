@@ -1,6 +1,8 @@
 package obj;
 
 import org.jgrapht.Graph;
+import org.jgrapht.alg.interfaces.VertexScoringAlgorithm;
+import org.jgrapht.alg.scoring.PageRank;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 
@@ -9,9 +11,15 @@ import java.util.ArrayList;
 public class NetworkGraph{
 
     Graph<Integer, DefaultEdge> graph = new SimpleGraph<Integer, DefaultEdge>(DefaultEdge.class); //GRAPH
+    VertexScoringAlgorithm<Integer, Double> pageRank;
 
     public NetworkGraph(ArrayList<Node> ret) {
 
+        initGraph(ret);
+        initPageRank(graph);
+    }
+
+    public void initGraph(ArrayList<Node> ret){
         Node currentNode;
         int currentNeighborID;
 
@@ -26,6 +34,10 @@ public class NetworkGraph{
                 graph.addEdge(currentNode.getNode_id(), currentNeighborID);
             }
         }
+    }
+
+    public void initPageRank(Graph<Integer, DefaultEdge> parGraph){
+        pageRank = new PageRank(graph, 0.85);
     }
 
     public Graph<Integer, DefaultEdge> getGraph() {

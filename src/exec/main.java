@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
 
-import org.jgrapht.EdgeFactory;
 import org.jgrapht.Graph;
 
 import file.GraphTreatment;
