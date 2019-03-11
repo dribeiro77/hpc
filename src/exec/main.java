@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
+import obj.Simulation;
 import org.jgrapht.Graph;
 
 import file.GraphTreatment;
@@ -25,7 +26,10 @@ public class main {
 
 		NetworkGraph netGraph = new NetworkGraph(ret);
 		Map<Integer, Double> scoreMap = netGraph.getSortedScoreMap();
-		Map<Integer, Double> scoreMapCured = netGraph.getVIPCuredMap(scoreMap, 25);
+		Map<Integer, Double> scoreMapCured = netGraph.getVaccinateMap(25);
+
+		Simulation sim = new Simulation(ret);
+
 
 		/*Iterator<Map.Entry<Integer, Double>> iterator =  scoreMap.entrySet().iterator();
 		while(iterator.hasNext()) {
@@ -35,7 +39,7 @@ public class main {
 		}*/
 
 
-		Iterator<Map.Entry<Integer, Double>> iterator =  scoreMapCured.entrySet().iterator();
+		/*Iterator<Map.Entry<Integer, Double>> iterator =  scoreMapCured.entrySet().iterator();
 		while(iterator.hasNext()) {
 			Map.Entry<Integer, Double> entry = iterator.next();
 			count ++;

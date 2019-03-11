@@ -55,8 +55,9 @@ public class NetworkGraph {
         return sortMap;
     }
 
-    public Map<Integer, Double> getVIPCuredMap(Map<Integer, Double> sortedMap, int curedPercent) {
-        int numberVIP = (sortedMap.size() * curedPercent) / 100;
+    public Map<Integer, Double> getVaccinateMap(int vaccinateNumber) {
+        Map<Integer, Double> sortedMap = getSortedScoreMap();
+        int numberVIP = vaccinateNumber;
         Map<Integer, Double> VIPMap = new TreeMap<>();
         for (Map.Entry<Integer, Double> entry : sortedMap.entrySet()) {
             if(numberVIP > 0){
