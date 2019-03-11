@@ -54,4 +54,16 @@ public class NetworkGraph {
         sortMap.putAll(unsortMap);
         return sortMap;
     }
+
+    public Map<Integer, Double> getVIPCuredMap(Map<Integer, Double> sortedMap, int curedPercent) {
+        int numberVIP = (sortedMap.size() * curedPercent) / 100;
+        Map<Integer, Double> VIPMap = new TreeMap<>();
+        for (Map.Entry<Integer, Double> entry : sortedMap.entrySet()) {
+            if(numberVIP > 0){
+                VIPMap.put(entry.getKey(), entry.getValue());
+                numberVIP --;
+            }
+        }
+        return VIPMap;
+    }
 }

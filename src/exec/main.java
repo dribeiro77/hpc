@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 
 import org.jgrapht.Graph;
 
@@ -20,20 +21,30 @@ public class main {
 
 		ReadFile read = new ReadFile();
 		ArrayList<Node> ret = read.readFile();
+		int count = 0;
 
 		NetworkGraph netGraph = new NetworkGraph(ret);
 		Map<Integer, Double> scoreMap = netGraph.getSortedScoreMap();
-		Iterator<Map.Entry<Integer, Double>> iterator =  scoreMap.entrySet().iterator();
+		Map<Integer, Double> scoreMapCured = netGraph.getVIPCuredMap(scoreMap, 25);
+
+		/*Iterator<Map.Entry<Integer, Double>> iterator =  scoreMap.entrySet().iterator();
 		while(iterator.hasNext()) {
 			Map.Entry<Integer, Double> entry = iterator.next();
+			count ++;
+			System.out.println(entry.getKey() + " --- " + entry.getValue());
+		}*/
+
+
+		Iterator<Map.Entry<Integer, Double>> iterator =  scoreMapCured.entrySet().iterator();
+		while(iterator.hasNext()) {
+			Map.Entry<Integer, Double> entry = iterator.next();
+			count ++;
 			System.out.println(entry.getKey() + " --- " + entry.getValue());
 		}
 
-		/*Set<Integer> testSet = netGraph.getGraph().vertexSet();
-		Iterator<Integer> iterator =  testSet.iterator();
-		while(iterator.hasNext()){
-			System.out.println(iterator.next());
-		}*/
+		System.out.println("--> " + count);
+
+		//System.out.println(ThreadLocalRandom.current().nextInt(0,100));
 
 		GraphTreatment grp = new GraphTreatment(ret);
 		
