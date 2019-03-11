@@ -3,6 +3,10 @@ package file;
 import obj.Node;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Set;
+
+import org.jgrapht.* ;
 
 public class GraphTreatment {
 	
