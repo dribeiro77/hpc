@@ -11,6 +11,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Simulation {
 
     int numberInfected;
+    int numberInfectedFlat;
     int numberVaccinated;
     int numberVaccinatedFlat;
     private Set<Integer> infectedPeople;
@@ -25,6 +26,7 @@ public class Simulation {
 
         networkGraph = new NetworkGraph(ret);
         numberInfected = ThreadLocalRandom.current().nextInt(0,ret.size());
+        numberInfectedFlat = 50;
         numberVaccinated = ThreadLocalRandom.current().nextInt(0,ret.size());
         numberVaccinatedFlat = 100;
 
@@ -100,7 +102,7 @@ public class Simulation {
         people.removeAll(vaccinatedPeople);
         List<Integer> shufflePeople = new ArrayList<>(people);
         Collections.shuffle(shufflePeople);
-        return new HashSet<>(shufflePeople.subList(0, numberInfected));
+        return new HashSet<>(shufflePeople.subList(0, numberInfectedFlat));
     }
 
     public Set<Integer> infectNeighbor(){

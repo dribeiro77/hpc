@@ -22,41 +22,10 @@ public class main {
 
 		ReadFile read = new ReadFile();
 		ArrayList<Node> ret = read.readFile();
-		int count = 0;
 
 		NetworkGraph netGraph = new NetworkGraph(ret);
-		Map<Integer, Double> scoreMap = netGraph.getSortedScoreMap();
-		Map<Integer, Double> scoreMapCured = netGraph.getVaccinateMap(25);
-
 		Simulation sim = new Simulation(ret);
 
-
-		/*Iterator<Map.Entry<Integer, Double>> iterator =  scoreMap.entrySet().iterator();
-		while(iterator.hasNext()) {
-			Map.Entry<Integer, Double> entry = iterator.next();
-			count ++;
-			System.out.println(entry.getKey() + " --- " + entry.getValue());
-		}*/
-
-
-		/*Iterator<Map.Entry<Integer, Double>> iterator =  scoreMapCured.entrySet().iterator();
-		while(iterator.hasNext()) {
-			Map.Entry<Integer, Double> entry = iterator.next();
-			count ++;
-			System.out.println(entry.getKey() + " --- " + entry.getValue());
-		}
-
-		System.out.println("--> " + count);
-
-		//System.out.println(ThreadLocalRandom.current().nextInt(0,100));
-
-		GraphTreatment grp = new GraphTreatment(ret);
-		
-		grp.matrixAdj();
-		/*grp.matrixTran();
-		grp.printMatrixAdj();
-		System.out.println();
-		grp.printMatrixTran();*/
 
 	}
 
