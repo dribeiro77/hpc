@@ -12,6 +12,7 @@ public class Simulation {
 
     int numberInfected;
     int numberVaccinated;
+    int numberVaccinatedFlat;
     private Set<Integer> infectedPeople;
     private Set<Integer> vaccinatedPeople;
     private ArrayList<Integer> infectedDataNoVaccination = new ArrayList<>();
@@ -25,6 +26,7 @@ public class Simulation {
         networkGraph = new NetworkGraph(ret);
         numberInfected = ThreadLocalRandom.current().nextInt(0,ret.size());
         numberVaccinated = ThreadLocalRandom.current().nextInt(0,ret.size());
+        numberVaccinatedFlat = 100;
 
         System.out.println("Simulation sans vaccin en cours:\n");
         simulationNoVaccination();
@@ -44,7 +46,7 @@ public class Simulation {
 
         for(int iteration = 0; iteration < 500; iteration++){
             infectedPeople = infectNeighbor();
-            infectedPeople = infectDistant();
+            //infectedPeople = infectDistant();
             infectedPeople = curePeople();
             infectedDataNoVaccination.add(infectedPeople.size());
         }
@@ -52,12 +54,12 @@ public class Simulation {
 
     public void simulationRandomVaccination(){
 
-        vaccinatedPeople = startVaccinateRandomPeople(networkGraph.graph); //no vaccination
+        vaccinatedPeople = startVaccinateRandomPeople(networkGraph.graph);
         infectedPeople = startInfectPeople(networkGraph.graph);
 
         for(int iteration = 0; iteration < 500; iteration++){
             infectedPeople = infectNeighbor();
-            infectedPeople = infectDistant();
+            //infectedPeople = infectDistant();
             infectedPeople = curePeople();
             infectedDataRandomVaccination.add(infectedPeople.size());
         }
@@ -65,12 +67,12 @@ public class Simulation {
 
     public void simulationPagerankVaccination(){
 
-        vaccinatedPeople = startVaccinatePagerankPeople(networkGraph.graph); //no vaccination
+        vaccinatedPeople = startVaccinatePagerankPeople(networkGraph.graph);
         infectedPeople = startInfectPeople(networkGraph.graph);
-        
+
         for(int iteration = 0; iteration < 500; iteration++){
             infectedPeople = infectNeighbor();
-            infectedPeople = infectDistant();
+            //infectedPeople = infectDistant();
             infectedPeople = curePeople();
             infectedDataPagerankVaccination.add(infectedPeople.size());
         }
@@ -80,7 +82,7 @@ public class Simulation {
         Set<Integer> people = new HashSet<>(graph.vertexSet());
         List<Integer> shufflePeople = new ArrayList<>(people);
         Collections.shuffle(shufflePeople);
-        return new HashSet<>(shufflePeople.subList(0, numberVaccinated));
+        return new HashSet<>(shufflePeople.subList(0, numberVaccinatedFlat));
     }
 
     public Set<Integer> startVaccinatePagerankPeople(Graph<Integer, DefaultEdge> graph){
